@@ -49,6 +49,9 @@ app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 
 // ROUTES
+app.get("/", async (res, res) => {
+    res.redirect("/movies");
+})
 
 //index
 app.get("/movies", async (req, res) => {
