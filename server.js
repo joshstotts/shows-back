@@ -38,18 +38,21 @@ db
 const movieSchema = new mongoose.Schema (
     {
         title: String,
+        image: String,
     },
     {
         timestamps: true,
     }
 );
 
-const Movie = mongoose.model("Movie", movieSchema);
+const Movies = mongoose.model("Movies", movieSchema);
 
 // mount middleware
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(cors());
+
+app.use(express.urlencoded({ extended: false }));
 
 // app.use(async function (req, res, next) {
 //     try {
@@ -76,7 +79,7 @@ app.use(cors());
 //index
 app.get("/movies", async (req, res) => {
     try {
-        res.json(await Movie.find({}));
+        res.json(await Movies.find(req.body));
     } catch (error) {
         res.status(400).json(error);
     }
@@ -85,7 +88,7 @@ app.get("/movies", async (req, res) => {
 //create
 app.post("/movies", async (req, res) => {
     try {
-        res.json(await Movie.create(req.body));
+        res.json(await Movies.create(req.body));
     } catch (error) {
         res.status(400).json(error);
     }
