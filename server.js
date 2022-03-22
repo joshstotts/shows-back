@@ -3,6 +3,7 @@ const express = require("express");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const methodOverride = require('method-override');
 const admin = require("firebase-admin");
 
 //initialize
@@ -11,13 +12,15 @@ const app = express();
 //configure server settings
 require("dotenv").config();
 
+const PORT = process.env.PORT || 4000;
+
 // config variables from .env
-const { MONGODB_URL, PORT } = process.env;
+const MONGODB_URI = process.env.MONGODB_URI;
 
 // connect to mongoDB
-mongoose.connect(MONGODB_URL, {
-    useUnifiedTopology: true,
+mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true,
+    useUnifiedTopology: true,
 });
 
 // mongoDB event listener
@@ -47,6 +50,8 @@ app.use(morgan("dev"));
 app.use(cors());
 
 app.use(express.urlencoded({ extended: false }));
+
+app.use(methodOverride('_method'));
 
 // ROUTES
 // app.get("/", async (res, res) => {

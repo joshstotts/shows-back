@@ -4,13 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    
-    "dev": "react-scripts start",
-    "start": "serve -s build",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "heroku-postbuild": "npm run build"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
@@ -20,6 +15,7 @@
     "express": "^4.17.3",
     "firebase": "^9.6.8",
     "firebase-admin": "^10.0.2",
+    "method-override": "^3.0.0",
     "mongodb": "^4.4.1",
     "mongoose": "^6.2.4",
     "morgan": "^1.10.0",
