@@ -54,9 +54,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
 
 // ROUTES
-app.get("/", async (res, res) => {
-    res.redirect("/movies");
-})
+// app.get("/", async (res, res) => {
+//     res.redirect("/movies");
+// })
 
 //index
 app.get("/movies", async (req, res) => {
